@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<ul>
+{#    {% for rp in role_permission %}#}
+{#        <li>{{ rp.permission_action__permission__name }}</li>#}
+{#    {% endfor %}#}
+{% for key,value in menu_list_dict.items %}
+    <li>{{ value.name }}</li>
+    {% if value.chind %}
+        <ul>
+        {% for v_child in value.child %}
+            <li>{{ v_child.name }}</li>
+            {% if v_child.child %}
+                <ul>
+                    {% for vv_child in v_child.child %}
+                        <li>{{ vv_child.name }}</li>
+                    {% endfor %}
+
+                </ul>
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+    {% endif %}
+{% endfor %}
+
+
+</ul>
+
+</body>
+</html>
